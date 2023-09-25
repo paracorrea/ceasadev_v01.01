@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout}">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">CEASA DEVCEASA</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/}">Home</a></li>
+				<li><a th:href="@{/ceasadev/grupos/cadastrar}"> Grupo</a></li>
+				<li><a href="#">Subgrupo</a></li>
+				<li><a href="#">Produto</a></li>
+			</ul>
+			<button class="btn btn-danger navbar-btn">Button</button>
+		</div>
+	</nav>
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+		<div class="container">
+
+			<div th:replace="~{fragments/alert}"></div>
+
+			<form
+				th:action="${grupo.id==null} ? @{/ceasadev/grupos/salvar} : @{/ceasadev/grupos/editar}"
+				th:object="${grupo}" method="POST">
+
+				<div th:replace="~{fragments/validacao :: validacao}"></div>
+
+
+				<div class="form-group">
+					<div class="form-group col-md-6">
+
+						<input type="text" class="form-control" id="nome"
+							placeholder="Nome Grupo" autofocus="autofocus" th:field="*{nome}" />
+
+					</div>
+				</div>
+
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Gravar</button>
+
+
+			</form>
+
+			
+			<table class="table">
+				
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome do Grupo</th>
+						<th>Editar/Excluir</th>
+						
+
+					</tr>
+				</thead>
+				<!-- Use Thymeleaf loop para exibir grupos -->
+				 <tbody>
+				<tr th:each="g : ${grupos}">
+					<td th:text="${g.id}"></td>
+					<td th:text="${g.nome}"></td>
+					
+					<td colspan="2">
+					<a class="btn btn-primary" th:href="@{/ceasadev/grupos/editar/{id} (id=${g.id}) }" role="button">
+	                <span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
+	                 </a>
+	                 <a class="btn btn-danger" th:href="@{/ceasadev/grupos/excluir/{id} (id=${g.id}) }" role="button"
+	                 title="excluir" aria-hidden="true">X</a>
+	                 <!--
+	                 <button th:id="${'btn_ceasadev/grupos/excluir/'+g.id}" type="button" class="btn btn-info btn-sm" 
+	                 data-toggle="modal" data-target="#myModal" >
+	                 <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
+	                 X</button>
+	                 -->
+	                </td>
+	                <td>
+	                	<a th:href="@{/ceasadev/subgrupos/view/{id} (id=${g.id})}" class="btn btn-success">Subgrupos</a> 
+	                </td>
+				</tr>
+				
+				
+				
+				</tbody>
+			</table>
+		</div>
+		
+
+		<div th:replace="~{fragments/modal :: modal}"></div>
+
+	</section>
+
+
+
+</body>
+</html>
