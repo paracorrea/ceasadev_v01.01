@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,7 +68,15 @@ public class SubgrupoController {
 			return ResponseEntity.ok().body(obj);	}
 		
 	
-		
+		// Lista todos os grupos de um determinado subgrupo
+				@GetMapping("/subgrupos/grupos1/{id}")
+				public String findGrupoPorSubgrupo1(@PathVariable Integer id, ModelMap model) {
+					
+					List<Subgrupo> obj = subgrupoService.findGrupoSubgrupo(id);
+					model.addAttribute("subgrupos", obj);
+					return "/grupo/cadastro";}
+				
+				
 		//Lista todos os subgrupos pelo nome passado
 		@GetMapping("/subgrupos/nome/{nome}")
 		public ResponseEntity<?> findSubgrupoByName(@PathVariable String nome){

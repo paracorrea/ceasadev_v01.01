@@ -75,6 +75,7 @@
 					<td th:text="${g.id}"></td>
 					<td th:text="${g.nome}"></td>
 					
+					
 					<td colspan="2">
 					<a class="btn btn-primary" th:href="@{/ceasadev/grupos/editar/{id} (id=${g.id}) }" role="button">
 	                <span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
@@ -88,15 +89,26 @@
 	                 X</button>
 	                 -->
 	                </td>
+	                
 	                <td>
-	                	<a th:href="@{/ceasadev/subgrupos/view/{id} (id=${g.id})}" class="btn btn-success">Subgrupos</a> 
-	                </td>
+	               		
+	               		 <a th:href="@{/ceasadev/subgrupos/grupos/{id} (id=${g.id})}" class="btn btn-success">Subgrupos</a> 
+	                	
+	                	
+	                	<tr th:each="s : ${subgrupos}">
+	                	
+	                	<td th:text="${s.id}"></td>
+	                	<td th:text="${s.nome}"></td>
+	                	
+	                	
+	               
 				</tr>
 				
 				
 				
-				</tbody>
+				
 			</table>
+			
 		</div>
 		
 
