@@ -32,8 +32,6 @@ public class GrupoController {
 	@Autowired
 	private GrupoService grupoService;
 	
-	@Autowired
-	private SubgrupoService subService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

@@ -85,9 +85,9 @@ public class SubgrupoService {
 	}
 
 
-	public Subgrupo findByNome(String nome) {
+	public List<Subgrupo> findByNome(String nome) {
 		
-		Subgrupo theQuery = subRepo.findSubgrupoByNome(nome);
+		List<Subgrupo> theQuery = subRepo.findSubgrupoByNome(nome);
 		return theQuery;
 	}
 	
@@ -101,6 +101,13 @@ public class SubgrupoService {
 		List<Subgrupo> listGrupos = subRepo.findGrupoPorSubgrupo(id);
 		return listGrupos;
 		
+	}
+
+	public boolean subgrupoTemProdutos(Integer id) {
+		if (findById(id).getProduto().isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 	
 }

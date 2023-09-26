@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout}">
-<head>
-<meta charset="UTF-8" /></head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<html xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>DEVCEASA  </title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+  </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">CEASA DEVCEASA</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a th:href="@{/ceasadev/grupos/cadastrar}"> Grupo</a></li>
-				<li><a href="#">Subgrupo</a></li>
-				<li><a href="#">Produto</a></li>
-			</ul>
-			<button class="btn btn-danger navbar-btn">Button</button>
-		</div>
-	</nav>
+
+
+	
 	<section class="layout-content" layout:fragment="corpo">
-	
 
-	<div class="mydiv">
-		<h6 th:text=" ${data}"></h6>
-	</div>
+	<header
+			 th:insert="~{fragments/menu :: menu-principal}">
+	</header>
 
+		
 
-	<div class="container">
-	
-		<h4> Início do Sistema DEVCEASA</h4>
-	
-	</div>
-</section> 		
+		<div class="container">
+
+			<h4>Início do Sistema DEVCEASA</h4>
+
+		</div>
+	</section>
 
 </body>
 

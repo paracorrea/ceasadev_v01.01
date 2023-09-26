@@ -1,3 +1,5 @@
+<!-- GRUPO CADASTRO -->
+
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout}">
 <head>
@@ -20,8 +22,8 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a th:href="@{/}">Home</a></li>
-				<li><a th:href="@{/ceasadev/grupos/cadastrar}"> Grupo</a></li>
-				<li><a href="#">Subgrupo</a></li>
+				<li><a href="/ceasadev/grupos/cadastrar"> Grupo</a></li>
+				<li><a href="/ceasadev/subgrupos/cadastrar">Subgrupo</a></li>
 				<li><a href="#">Produto</a></li>
 			</ul>
 			<button class="btn btn-danger navbar-btn">Button</button>
@@ -81,7 +83,7 @@
 	                <span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
 	                 </a>
 	                 <a class="btn btn-danger" th:href="@{/ceasadev/grupos/excluir/{id} (id=${g.id}) }" role="button"
-	                 title="excluir" aria-hidden="true">X</a>
+	                 title="excluir" aria-hidden="true">Excluir</a>
 	                 <!--
 	                 <button th:id="${'btn_ceasadev/grupos/excluir/'+g.id}" type="button" class="btn btn-info btn-sm" 
 	                 data-toggle="modal" data-target="#myModal" >

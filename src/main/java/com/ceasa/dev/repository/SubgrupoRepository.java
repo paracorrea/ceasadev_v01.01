@@ -12,7 +12,7 @@ import com.ceasa.dev.dominio.Subgrupo;
 public interface SubgrupoRepository extends JpaRepository<Subgrupo, Integer> {
 
 	@Query("SELECT t FROM Subgrupo t WHERE t.nome = ?1")
-	Subgrupo findSubgrupoByNome(String nome);
+	List<Subgrupo> findSubgrupoByNome(String nome);
 	
 	@Query("SELECT a FROM Subgrupo a INNER JOIN a.produtos s WHERE s.id = ?1")
 	List<Subgrupo> findProdutoEmSubgrupo(Integer id);

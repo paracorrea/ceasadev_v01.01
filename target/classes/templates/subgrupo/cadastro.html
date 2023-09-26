@@ -1,4 +1,5 @@
-<!-- GRUPO CADASTRO -->
+
+<!-- subgrupo  -->
 
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout}">
@@ -21,7 +22,7 @@
 				<a class="navbar-brand" href="#">CEASA DEVCEASA</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a th:href="@{/}">Home</a></li>
+				<li class="active"><a href="/">Home</a></li>
 				<li><a href="/ceasadev/grupos/cadastrar"> Grupo</a></li>
 				<li><a href="/ceasadev/subgrupos/cadastrar">Subgrupo</a></li>
 				<li><a href="#">Produto</a></li>
@@ -29,16 +30,17 @@
 			<button class="btn btn-danger navbar-btn">Button</button>
 		</div>
 	</nav>
-<body>
-
-	<section class="layout-content" layout:fragment="corpo">
+	
+	
+	
+		<section class="layout-content" layout:fragment="corpo">
 		<div class="container">
 
 			<div th:replace="~{fragments/alert}"></div>
 
 			<form
-				th:action="${grupo.id==null} ? @{/ceasadev/grupos/salvar} : @{/ceasadev/grupos/editar}"
-				th:object="${grupo}" method="POST">
+				th:action="${subgrupo.id==null} ? @{/ceasadev/subgrupos/salvar} : @{/ceasadev/subgrupos/editar}"
+				th:object="${subgrupo}" method="POST">
 
 				<div th:replace="~{fragments/validacao :: validacao}"></div>
 
@@ -47,7 +49,7 @@
 					<div class="form-group col-md-6">
 
 						<input type="text" class="form-control" id="nome"
-							placeholder="Nome Grupo" autofocus="autofocus" th:field="*{nome}" />
+							placeholder="Nome Subgrupo" autofocus="autofocus" th:field="*{nome}" />
 
 					</div>
 				</div>
@@ -73,9 +75,9 @@
 				</thead>
 				<!-- Use Thymeleaf loop para exibir grupos -->
 				 <tbody>
-				<tr th:each="g : ${grupos}">
-					<td th:text="${g.id}"></td>
-					<td th:text="${g.nome}"></td>
+				<tr th:each="s : ${subgrupos}">
+					<td th:text="${s.id}"></td>
+					<td th:text="${s.nome}"></td>
 					
 					
 					<td colspan="2">
