@@ -2,7 +2,7 @@
 <!-- subgrupo  -->
 
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
@@ -31,8 +31,9 @@
 		</div>
 	</nav>
 	
+	<body>
 	
-	
+		
 		<section class="layout-content" layout:fragment="corpo">
 		<div class="container">
 
@@ -52,6 +53,15 @@
 							placeholder="Nome Subgrupo" autofocus="autofocus" th:field="*{nome}" />
 
 					</div>
+					<div class="form-group col-md-4">
+	                        <label for="grupo">Grupo</label>
+	                        <select id="grupo" class="form-control" th:field="*{grupo}">
+	                            <option value="">Selecione</option>
+	                            <option th:each="gr : ${grupos}" 
+	                               		th:value="${gr.id}" 
+	                            		th:text="${gr.nome}">Administração</option>
+	                        </select>
+	                    </div>
 				</div>
 
 
@@ -67,6 +77,7 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Nome do Subgrupo</th>
 						<th>Nome do Grupo</th>
 						<th>Editar/Excluir</th>
 						
@@ -75,16 +86,17 @@
 				</thead>
 				<!-- Use Thymeleaf loop para exibir grupos -->
 				 <tbody>
-				<tr th:each="s : ${subgrupos}">
-					<td th:text="${s.id}"></td>
-					<td th:text="${s.nome}"></td>
+				<tr th:each="sub : ${subgrupos}">
+					<td th:text="${sub.id}"></td>
+					<td th:text="${sub.nome}"></td>
+					<td th:text="${sub.grupo.nome}"></td>
 					
 					
 					<td colspan="2">
-					<a class="btn btn-primary" th:href="@{/ceasadev/grupos/editar/{id} (id=${g.id}) }" role="button">
+					<a class="btn btn-primary" th:href="@{/ceasadev/subgrupos/editar/{id} (id=${sub.id}) }" role="button">
 	                <span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
 	                 </a>
-	                 <a class="btn btn-danger" th:href="@{/ceasadev/grupos/excluir/{id} (id=${g.id}) }" role="button"
+	                 <a class="btn btn-danger" th:href="@{/ceasadev/subgrupos/excluir/{id} (id=${sub.id}) }" role="button"
 	                 title="excluir" aria-hidden="true">Excluir</a>
 	                 <!--
 	                 <button th:id="${'btn_ceasadev/grupos/excluir/'+g.id}" type="button" class="btn btn-info btn-sm" 
@@ -93,25 +105,8 @@
 	                 X</button>
 	                 -->
 	                </td>
-	                
-	                <td>
-	               		
-	               		 <a th:href="@{/ceasadev/subgrupos/grupos/{id} (id=${g.id})}" class="btn btn-success">Subgrupos</a> 
-	                	
-	                	
-	                	<tr th:each="s : ${subgrupos}">
-	                	
-	                	<td th:text="${s.id}"></td>
-	                	<td th:text="${s.nome}"></td>
-	                	
-	                	
-	               
-				</tr>
-				
-				
-				
-				
-			</table>
+
+	</table>
 			
 		</div>
 		
@@ -119,7 +114,6 @@
 		<div th:replace="~{fragments/modal :: modal}"></div>
 
 	</section>
-
 
 
 </body>

@@ -22,8 +22,12 @@ public class SubgrupoService {
 	
 	
 	
-	
 
+	@Transactional
+	public Subgrupo insert(Subgrupo obj) {
+		return subRepo.save(obj);
+	}
+		
 	
 	public Subgrupo findById(Integer id) {
 		
@@ -40,20 +44,6 @@ public class SubgrupoService {
 	}
 	
 	
-	@Transactional
-	public Subgrupo insert(Subgrupo obj) {
-		
-		
-		
-		
-		obj.setId(null);
-		
-		
-			
-		// fazer verificação se objeto existe antes de salvar
-		return subRepo.save(obj);
-	}
-		
 
 	
 	@Transactional

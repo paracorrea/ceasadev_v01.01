@@ -20,6 +20,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "subgrupo")
@@ -32,9 +33,11 @@ public class Subgrupo implements Serializable {
 	@Column(name="id")
 	private Integer id;
 
-	@Column(name = "nome", nullable = false, length = 50)
+	@Column(name = "nome", length = 50)
+	@NotNull(message="Campo não pode ser nullo")
 	private String nome;
 
+	@NotNull(message = "Selecione grupo relativo ao subgrupo")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE,	CascadeType.DETACH,
 							CascadeType.REFRESH})
@@ -42,7 +45,7 @@ public class Subgrupo implements Serializable {
 	@JsonIgnore
 	private Grupo grupo;
 
-	// Mapp relationship - Subgrupo and Produto
+	
 	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	@OneToMany(mappedBy = "subgrupo",
 				fetch = FetchType.LAZY, 
@@ -104,12 +107,7 @@ public class Subgrupo implements Serializable {
 		this.produtos = produtos;
 	}
 
-	@Override
-	public String toString() {
-		return "Subgrupo [id=" + id + ", nome=" + nome + ", grupo=" + grupo.getNome() + ", produtos=" + produtos + "]";
-	}
-
-
+	
 
 	
 	

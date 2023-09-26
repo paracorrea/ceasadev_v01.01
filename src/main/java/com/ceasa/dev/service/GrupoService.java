@@ -37,7 +37,7 @@ public class GrupoService {
 	}
 	@Transactional
 	public Grupo insert(Grupo obj) {
-		obj.setId(null);
+		//obj.setId(null);
 		return grupoRepository.save(obj);
 	}
 	

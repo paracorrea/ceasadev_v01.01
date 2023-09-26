@@ -17,14 +17,14 @@ public class SubgrupoValidator implements Validator{
 	
 
 	public SubgrupoValidator(SubgrupoService subgrupoService) {
-		super();
+	
 		this.subgrupoService = subgrupoService;
 	}
 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return Grupo.class.equals(clazz);
+		return Subgrupo.class.equals(clazz);
 	}
 
 	@Override

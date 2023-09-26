@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -53,8 +54,10 @@ public class SubgrupoController {
 
 		
 		@GetMapping("/subgrupos/cadastrar")
-		public String cadastrar(Subgrupo subgrupos, ModelMap model) {
-			model.addAttribute("subgrupos", subgrupoService.findAll());						
+		public String cadastrar(Subgrupo subgrupos, Model model) {
+			
+			List<Subgrupo> lista = subgrupoService.findAll();
+			model.addAttribute("subgrupos", lista);						
 			return "/subgrupo/cadastro";
 		}
 		
@@ -72,7 +75,7 @@ public class SubgrupoController {
 		
 		@GetMapping("/subgrupos/editar/{id}")
 		public String preEditar(@PathVariable("id") Integer id, ModelMap model) {
-			model.addAttribute("subgrupos", subgrupoService.findById(id));
+			model.addAttribute("subgrupo", subgrupoService.findById(id));
 			return "/subgrupo/cadastro";
 		}
 		
@@ -84,13 +87,13 @@ public class SubgrupoController {
 			}
 			
 			subgrupoService.update(subgrupo);
-			attr.addFlashAttribute("message", "Subgrupo editado com sucesso");
+			attr.addFlashAttribute("success", "Subgrupo editado com sucesso");
 			return "redirect:/ceasadev/subgrupos/cadastrar";
 		}
 		
 		
-		@ModelAttribute("departamentos")
-		public List<Grupo> listaDepartamentos() {
+		@ModelAttribute("grupos")
+		public List<Grupo> listaGrupos() {
 			return grupoService.findAll();
 		}
 		
@@ -107,7 +110,7 @@ public class SubgrupoController {
 			
 			attr.addAttribute("message", "Subgrupo cadastrado com sucesso");
 			
-			return "/grupo/mensagem";
+			return "/subgrupo/mensagem";
 		}
 		
 		@DeleteMapping("/subgrupos/excluir/{id}")
@@ -116,7 +119,7 @@ public class SubgrupoController {
 			
 			if (subgrupoService.subgrupoTemProdutos(id)) {
 				attr.addFlashAttribute("message", "subgrupo não removido. Possui Produtos");
-				return "redirect:/cargos/listar";
+				return "redirect:/ceasadev/subgrupos/listar";
 				
 			} else {
 			subgrupoService.delete(id);
