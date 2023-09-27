@@ -26,10 +26,10 @@ public class StartNoProjeto {
 		
 	}
 	
-	@GetMapping("/css")
+	@GetMapping("/teste")
 	public String css() {
 				
-		return "/testes/start-css-js-teste";
+		return "/categorias/formCategoria";
 		
 	}
 	
