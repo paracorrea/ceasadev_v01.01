@@ -87,7 +87,7 @@ public class SubgrupoController {
 			}
 			
 			subgrupoService.update(subgrupo);
-			attr.addFlashAttribute("success", "Subgrupo editado com sucesso");
+			attr.addFlashAttribute("message", "Subgrupo editado com sucesso");
 			return "redirect:/ceasadev/subgrupos/cadastrar";
 		}
 		
@@ -99,7 +99,7 @@ public class SubgrupoController {
 		
 		
 		@PostMapping("/subgrupos/salvar")
-		public String salvar(@Valid Subgrupo subgrupo, BindingResult result, RedirectAttributes attr) {
+		public String salvar(@Valid Subgrupo subgrupo, BindingResult result, RedirectAttributes attr, Model model) {
 
 			if (result.hasErrors()) {
 				return "/subgrupo/cadastro";
@@ -108,7 +108,7 @@ public class SubgrupoController {
 			// antes de inserir o obj no service, fazer o find para pa
 			subgrupoService.insert(subgrupo);
 			
-			attr.addAttribute("message", "Subgrupo cadastrado com sucesso");
+			attr.addAttribute("mensagem", "Subgrupo cadastrado com sucesso");
 			
 			return "/subgrupo/mensagem";
 		}

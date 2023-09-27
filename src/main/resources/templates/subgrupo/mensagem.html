@@ -20,14 +20,14 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a th:href="@{/}">Home</a></li>
 				<li><a th:href="@{/ceasadev/grupos/cadastrar}"> Grupo</a></li>
-				<li><a href="#">Subgrupo</a></li>
+				<li><a th:href="@{/ceasadev/subgrupos/cadastrar}">Subgrupo</a></li>
 				<li><a href="#">Produto</a></li>
 			</ul>
 			<button class="btn btn-danger navbar-btn">Button</button>
 		</div>
 	</nav>
 	
-	<div> <h3 th:text="${message}"></h3></div>
-<body>
+	 <h3 th:text="${mensagem}"></h3>
+
 </body>
 </html>
