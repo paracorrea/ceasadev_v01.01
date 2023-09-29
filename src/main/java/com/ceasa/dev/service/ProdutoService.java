@@ -76,6 +76,11 @@ public class ProdutoService {
 		List<Produto> listGroups = produtoRepo.findProdutoPertencenteAoGrupo(id);
 		return listGroups;
 	}
+	public List<Produto> findByNome(String nome) {
+		List<Produto> theQuery = produtoRepo.findByNome(nome);
+		return theQuery;
+		
+	}
 	
 
 	/*

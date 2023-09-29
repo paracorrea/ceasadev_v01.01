@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ceasa.dev.dominio.Produto;
 import com.ceasa.dev.service.ProdutoService;
+import com.ceasa.dev.web.validator.ProdutoValidator;
 
 @Controller
 @RequestMapping(value = "/ceasadev")
@@ -26,6 +29,11 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService produtoService;
 	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+			
+		binder.addValidators(new ProdutoValidator(produtoService));
+	}
 	
 
 	public ProdutoController(ProdutoService produtoService) {
