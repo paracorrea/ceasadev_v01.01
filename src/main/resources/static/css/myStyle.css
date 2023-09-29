@@ -1,0 +1,51 @@
+
+  @charset "utf-8";
+
+
+.container-fluid {
+	background-color:#4F4F4F ;
+}
+
+nav div {
+	background-color: #4F4F4F;
+	border-radius: 3px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+ 
+}
+nav a {
+  display: block;
+  padding: 0px 15px;
+  text-decoration: none;
+  
+}
+
+nav .navbar-nav li a{
+  color: white ;
+  
+  }
+  
+  .container-fluid .navbar-brand {
+  color: white ;
+  
+  }
+ 
+
+ .footer {
+ position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #4F4F4F;
+color: white;
+text-align: center;
+ }
+ 	
+  

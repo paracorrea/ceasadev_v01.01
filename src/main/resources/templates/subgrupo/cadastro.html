@@ -1,37 +1,21 @@
 
 <!-- subgrupo  -->
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-
+<!DOCTYPE html><!-- GRUPO CADASTRO -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap.com/css/docs.css}" rel="stylesheet">
+     <link th:href="@{/css/myStyle.css}" rel="stylesheet">
+    <title>Sistema de Dados CEASA</title>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">CEASA DEVCEASA</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="/ceasadev/grupos/cadastrar"> Grupo</a></li>
-				<li><a href="/ceasadev/subgrupos/cadastrar">Subgrupo</a></li>
-				<li><a href="#">Produto</a></li>
-			</ul>
-			<button class="btn btn-danger navbar-btn">Button</button>
-		</div>
-	</nav>
 	
-	<body>
+	<header th:insert="~{fragments/menu :: menu-principal}"> </header>
+	
 	
 		
 		<section class="layout-content" layout:fragment="corpo">
@@ -61,7 +45,7 @@
 	                               		th:value="${gr.id}" 
 	                            		th:text="${gr.nome}">Administração</option>
 	                        </select>
-	                    </div>
+	                 </div>
 				</div>
 
 
@@ -90,21 +74,13 @@
 					<td th:text="${sub.id}"></td>
 					<td th:text="${sub.nome}"></td>
 					<td th:text="${sub.grupo.nome}"></td>
-					
-					
 					<td colspan="2">
-					<a class="btn btn-primary" th:href="@{/ceasadev/subgrupos/editar/{id} (id=${sub.id}) }" role="button">
-	                <span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
-	                 </a>
-	                 <a class="btn btn-danger" th:href="@{/ceasadev/subgrupos/excluir/{id} (id=${sub.id}) }" role="button"
-	                 title="excluir" aria-hidden="true">Excluir</a>
-	                 <!--
-	                 <button th:id="${'btn_ceasadev/grupos/excluir/'+g.id}" type="button" class="btn btn-info btn-sm" 
-	                 data-toggle="modal" data-target="#myModal" >
-	                 <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
-	                 X</button>
-	                 -->
-	                </td>
+						<a class="btn btn-primary" th:href="@{/ceasadev/subgrupos/editar/{id} (id=${sub.id}) }" role="button">
+	                	<span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
+	                	</a>
+	                 	<a class="btn btn-danger" th:href="@{/ceasadev/subgrupos/excluir/{id} (id=${sub.id}) }" role="button"
+	                	 title="excluir" aria-hidden="true">Excluir</a>
+	                 </td>
 
 	</table>
 			
@@ -115,6 +91,8 @@
 
 	</section>
 
-
+<div class="footer">
+ <footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+</div>
 </body>
 </html>

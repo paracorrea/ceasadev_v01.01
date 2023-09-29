@@ -94,7 +94,7 @@ public class ProdutoController {
 
 	}
 	
-	@GetMapping("/produtos/mostrar")
+	@GetMapping("/produtos/cadastrar")
 	public String listarProdutos(Produto produto , Model model) {
 		
 		model.addAttribute("produtos", produtoService.findAll());

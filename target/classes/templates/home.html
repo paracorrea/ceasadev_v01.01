@@ -1,77 +1,33 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html><!-- GRUPO CADASTRO -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-
-    <title>CEASA DEVCEASA</title>
-    <!-- Bootstrap core CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap.com/css/docs.css}" rel="stylesheet">
+     <link th:href="@{/css/myStyle.css}" rel="stylesheet">
+    <title>Sistema de Dados CEASA</title>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
   </head>
-
- 
-  <body>
-	<header
-			 th:insert="~{fragments/menu :: menu-principal}">
-	</header>
+<body>
 	
-    <main role="main">
 
+<header th:insert="~{fragments/menu :: menu-principal}"> </header>
+
+	<section class="layout-content" layout:fragment="corpo">
+	<div class="container">
+
+			<div th:replace="~{fragments/alert}"></div>
 	
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h3>Pesquisar por Produtos.</h3>
-          buscar por nome e subgrupo.
-          <form class="form-inline">
-            <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Digite um produto">&nbsp;
-            <select class="custom-select custom-select mb-3">
-              <option selected>Selecione um subgrupo</option>
-              <option value="1">FRUTAS NACIONAIS</option>
-              <option value="2">FRUTAS IMPORTADAS</option>
-              <option value="3">FRUTAS ORGANICAS</option>
-              <option value="4">FOLHAS HASTES</option>
-              <option value="5">FOLHAS HASTES ORGANICOS</option>
-            </select>&nbsp;
-            <button type="submit" class="btn btn-primary mb-3">Buscar</button>
-          </form>
-        </div>
-      </div>
-      <hr>
+		</div>
+		
 
-      <div class="container"> 
-        <h4 class="font-weight-bold text-center text-capitalize">LOCALIZADOS</h4>
-        <hr>
-        <div class="row" th:each="vacante : ${vacantes}">
-          <div class="col-md-3">            
-            <img class="rounded mx-auto d-block" th:src="@{/images/{img} (img=${vacante.imagen} ) }" alt="Generic placeholder image" width="220" height="220">            
-          </div>
-          <div class="col-md-9">
-            <h2 th:text="${vacante.nombre}"></h2>
-            <h6 class="card-title"><strong>Categoría: </strong> <span></span></h6>
-            <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${vacante.fecha}"></span></h6>                
-            <p th:text="${vacante.descripcion}"></p>
-            <p><a class="btn btn-secondary" th:href="@{/vacantes/view/{id} (id=${vacante.id})  }" role="button">Detalhes &raquo;</a></p>            
-          </div>
-        </div>  
-                 
-		  <hr>	
-      </div> <!-- /container -->
+		
 
-    </main>
+	</section>
 
-    <footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-  </body>
+<div class="footer">
+ <footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+</div>
+</body>
 </html>
