@@ -106,7 +106,7 @@ public class ProdutoController {
 	public String listarProdutos(Produto produto , Model model) {
 		
 		model.addAttribute("produtos", produtoService.findAll());
-		return "/produto/listar";
+		return "/produto/cadastro";
 	
 }
 }
