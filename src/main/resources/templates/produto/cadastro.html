@@ -46,6 +46,7 @@
 	                            		th:text="${gr.nome}">Administração</option>
 	                        </select>
 	                 </div>
+	                 
 				
 				
 				<input type="hidden" id="id" th:field="*{id}" />
@@ -63,6 +64,7 @@
 					<th>Id</th>
 					<th>Produto</th>
 					<th>Subgrupo</th>
+					<th>Editar/Excluir</th>
 					
 					
 					
@@ -74,8 +76,13 @@
 					<td th:text="${produto.nome}"></td>
 					<td th:text="${produto.subgrupo.nome}"></td>
 					
-					
-					
+					<td colspan="2">
+						<a class="btn btn-primary" th:href="@{/ceasadev/produtos/editar/{id} (id=${produto.id}) }" role="button">
+	                	<span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
+	                	</a>
+	                 	<a class="btn btn-danger" th:href="@{/ceasadev/produtos/excluir/{id} (id=${produto.id}) }" role="button"
+	                	 title="excluir" aria-hidden="true">Excluir</a>
+	                 </td>
 					
 					
 				</tr>

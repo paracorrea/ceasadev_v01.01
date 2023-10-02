@@ -80,15 +80,15 @@ public class SubgrupoController {
 		}
 		
 		@PostMapping("/subgrupos/editar")
-		public String editar(@Valid Subgrupo subgrupo, BindingResult result, RedirectAttributes attr) {
+		public String editar(@Valid Subgrupo subgrupo, BindingResult result, Model model) {
 			
 			if (result.hasErrors()) {
 				return "/subgrupo/cadastro";
 			}
 			
 			subgrupoService.update(subgrupo);
-			attr.addFlashAttribute("message", "Subgrupo editado com sucesso");
-			return "redirect:/ceasadev/subgrupos/cadastrar";
+			model.addAttribute("mensagem", "Subgrupo editado com sucesso");
+			return "/subgrupo/mensagem";
 		}
 		
 		
@@ -108,26 +108,27 @@ public class SubgrupoController {
 			// antes de inserir o obj no service, fazer o find para pa
 			subgrupoService.insert(subgrupo);
 			
-			attr.addAttribute("mensagem", "Subgrupo cadastrado com sucesso");
+			model.addAttribute("mensagem", "Subgrupo cadastrado com sucesso");
 			
 			return "/subgrupo/mensagem";
 		}
 		
-		@DeleteMapping("/subgrupos/excluir/{id}")
-		public String excluir(@PathVariable("id") Integer id, RedirectAttributes attr)  {
+		@GetMapping("/subgrupos/excluir/{id}")
+		public String excluir(@PathVariable("id") Integer id, Model model)  {
 
 			
 			if (subgrupoService.subgrupoTemProdutos(id)) {
-				attr.addFlashAttribute("message", "subgrupo não removido. Possui Produtos");
-				return "redirect:/ceasadev/subgrupos/listar";
+				model.addAttribute("mensagem", "subgrupo não removido. Possui Produtos");
+				
 				
 			} else {
 			subgrupoService.delete(id);
 			
-			attr.addFlashAttribute("message", "Subgrupo removido com sucesso");		
-			return "redirect:/ceasdev/subgrupos/listar";
+			model.addAttribute("mensagem","Subgrupo excluído com sucesso")	;	
+			
 
 		}
+			return "/subgrupo/mensagem";
 		}
 		
 		//@GetMapping("/subgrupos/view/{id}")

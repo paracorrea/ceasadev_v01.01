@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ceasa.dev.dominio.Grupo;
 import com.ceasa.dev.dominio.Produto;
-import com.ceasa.dev.dominio.Subgrupo;
 import com.ceasa.dev.repository.ProdutoRepository;
 import com.ceasa.dev.service.exceptions.DataIntegrityException;
 import com.ceasa.dev.service.exceptions.ObjectNotFoundException;
@@ -81,6 +80,13 @@ public class ProdutoService {
 		return theQuery;
 		
 	}
+	public boolean produtoTemPropriedades(Integer id) {
+		if (findById(id).getPropriedades().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+	}
 	
 
 	/*
@@ -99,6 +105,6 @@ public class ProdutoService {
 	 * @Transactional(readOnly = true) public List<Grupo> buscarPorNome(String nome)
 	 * { return dao.findByName(nome); }
 	 */
-	}
+	
 	
 

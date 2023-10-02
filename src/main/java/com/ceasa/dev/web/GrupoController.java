@@ -89,15 +89,15 @@ public class GrupoController {
 	}
 	
 	@PostMapping("/grupos/editar")
-	public String editar(@Valid Grupo grupo, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Grupo grupo, BindingResult result, Model model) {
 		
 		if (result.hasErrors()) {
 			return "/grupo/cadastro";
 		}
 		
 		grupoService.update(grupo);
-		attr.addFlashAttribute("success", "Grupo editado com sucesso");
-		return "redirect:/ceasadev/grupos/cadastrar";
+		model.addAttribute("message", "Grupo editado com sucesso");
+		return "/grupo/mensagem";
 	}
 	
 	@GetMapping("/grupos/excluir/{id}")
