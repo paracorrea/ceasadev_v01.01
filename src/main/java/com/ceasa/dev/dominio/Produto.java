@@ -20,6 +20,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "produto")
@@ -34,7 +35,7 @@ public class Produto implements Serializable {
 	@Column(name = "nome", nullable = false, length = 25)
 	String nome;
 
-	
+	@NotNull(message = "Selecione subgrupo relativo ao produto")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,CascadeType.REFRESH })
 	@JoinColumn(name = "subgrupo_id")

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tymeleaf.org">
+<head>
+<title>Sistema DECCEASA</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap.com/css/docs.css}" rel="stylesheet">
+     <link th:href="@{/css/myStyle.css}" rel="stylesheet">
+    <title>Sistema de Dados CEASA</title>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </head>
+
+<body>
+
+	
+<header th:insert="~{fragments/menu :: menu-principal}"> </header>
+	
+	 <h3 th:text="${mensagem}"></h3>
+
+</body>
+</html>

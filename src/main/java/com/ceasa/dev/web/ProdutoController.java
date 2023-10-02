@@ -9,13 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -58,7 +56,7 @@ public class ProdutoController {
 	
 	
 	@GetMapping("/produtos/cadastrar")
-	public String listarProdutos(Produto produto , Model model) {
+	public String listarProdutos(Produto produto , ModelMap model) {
 		List<Produto> lista = produtoService.findAll();
 		model.addAttribute("produtos", lista);
 		return "/produto/cadastro";
@@ -84,13 +82,13 @@ public class ProdutoController {
 		
 		
 		produtoService.update(produto);
-		attr.addFlashAttribute("message", "Produto editado com sucesso");
+		attr.addFlashAttribute("mensagem", "Produto editado com sucesso");
 		return "redirect:/ceasadev/produtos/cadastrar";
 
 	}
 	
 	@PostMapping("/produtos/salvar")
-	public String salvar(@Valid Produto produto,BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Produto produto,BindingResult result, Model model) {
 
 		
 
@@ -100,7 +98,7 @@ public class ProdutoController {
 		
 		
 		produtoService.insert(produto);
-		attr.addAttribute("mensagem", "Subgrupo cadastrado com sucesso");
+		model.addAttribute("mensagem", "Subgrupo cadastrado com sucesso");
 		return "/produto/mensagem";
 		
 	
@@ -110,16 +108,16 @@ public class ProdutoController {
 	public String excluir(@PathVariable("id") Integer id, Model model) {
 
 		if (produtoService.produtoTemPropriedades(id)) {
-			model.addAttribute("message", "Produto não pode ser removido. Possui propriedades");
+			model.addAttribute("mensagem", "Produto não pode ser removido. Possui propriedades");
 			
 			
 		} else {
 		
 		produtoService.delete(id);
-		model.addAttribute("message","Produto excluído com sucesso");		
+		model.addAttribute("mensagem","Produto excluído com sucesso");		
 		
 		}		
-		return "/produtos/mensagem";
+		return "/produto/mensagem";
 
 	
 	}
