@@ -8,7 +8,7 @@
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/bootstrap.com/css/docs.css}" rel="stylesheet">
      <link th:href="@{/css/myStyle.css}" rel="stylesheet">
-    <title>Sistema de Dados CEASA</title>
+    <title>Sistema DEVCEASA</title>
     <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
   </head>
 
@@ -84,7 +84,14 @@
 	                	 title="excluir" aria-hidden="true">Excluir</a>
 	                 </td>
 					
-					
+					<td>
+					<!--  
+	               		<a th:href="@{/ceasadev/propriedades/produtos/{id} (id=${produto.id})}" class="btn btn-success">Propriedades</a> 
+	                	 <tr th:each="p : ${propriedades}">
+	                	 <td th:text="${p.id}"></td>
+	                	<td th:text="${p.nome}">
+	                </td>
+				-->
 				</tr>
 
 			</tbody>

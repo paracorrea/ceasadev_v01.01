@@ -1,4 +1,5 @@
-<!DOCTYPE html><!-- GRUPO CADASTRO -->
+<!-- GRUPO CADASTRO -->
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
  <head>
     <meta charset="utf-8">
@@ -66,11 +67,12 @@
 	                	<td th:text="${s.nome}">
 	                </td>
 				</tr>
+				 </tbody>
 			</table>
 		</div>
 		
-
-		<div th:replace="~{fragments/modal :: modal}"></div>
+		
+		<div th:replace="fragments/modal :: modal"></div>
 
 	</section>
 

@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.tymeleaf.org">
 <head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap.com/css/docs.css}" rel="stylesheet">
+     <link th:href="@{/css/myStyle.css}" rel="stylesheet">
+    <title>Sistema DEVCEASA</title>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">CEASA DEVCEASA</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a th:href="@{/}">Home</a></li>
-				<li><a th:href="@{/ceasadev/grupos/cadastrar}"> Grupo</a></li>
-				<li><a th:href="@{/ceasadev/subgrupos/cadastrar}">Subgrupo</a></li>
-				<li><a href="#">Produto</a></li>
-			</ul>
-			<button class="btn btn-danger navbar-btn">Button</button>
-		</div>
-	</nav>
+<header th:insert="~{fragments/menu :: menu-principal}"> </header>
 	
 	 <h3 th:text="${mensagem}"></h3>
 
