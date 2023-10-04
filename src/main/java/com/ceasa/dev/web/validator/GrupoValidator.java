@@ -9,7 +9,7 @@ import com.ceasa.dev.dominio.Grupo;
 import com.ceasa.dev.service.GrupoService;
 
 
-public class GrupoValidator implements Validator {
+public class GrupoValidator   implements Validator {
 
 	
 	GrupoService grupoService;
@@ -38,7 +38,9 @@ public class GrupoValidator implements Validator {
 				errors.rejectValue("nome", "GrupoJaExiste.grupo.nome");
 			}
 		}
+	
+	
 		
-	}
-
+	} 
+	
 }

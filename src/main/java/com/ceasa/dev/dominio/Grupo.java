@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +31,7 @@ public class Grupo implements Serializable {
 
 	@Column(name = "nome", length = 20)
 	@NotNull(message="Campo não pode ser nullo")
-	//@Size(min=5, message="Deve ter no mínimo 5 caracteres")
+	@Size(min=1, message="Deve ter no mínimo 5 caracteres")
 	String nome;
 
 	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
@@ -73,7 +75,7 @@ public class Grupo implements Serializable {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
 	public void setSubgrupos(List<Subgrupo> subgrupos) {

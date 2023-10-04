@@ -33,7 +33,7 @@ public class Subgrupo implements Serializable {
 	@Column(name="id")
 	private Integer id;
 
-	@Column(name = "nome", length = 50)
+	@Column(name = "nome", length = 30)
 	@NotNull(message="Campo não pode ser nullo")
 	private String nome;
 
@@ -90,7 +90,7 @@ public class Subgrupo implements Serializable {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase(null);
 	}
 
 	public Grupo getGrupo() {

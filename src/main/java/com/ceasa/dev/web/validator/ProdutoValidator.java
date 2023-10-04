@@ -42,8 +42,6 @@ public class ProdutoValidator implements Validator {
 		
 	
 		
-		//List<Subgrupo> subgrupos = subService.findProdutoPorSubgrupo(id)
-		//List<Subgru po> subgrupos = subService.findByNome(nomeS);
 		
 		
 		if (produtos.size() >0 ) {

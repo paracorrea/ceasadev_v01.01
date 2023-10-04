@@ -36,6 +36,7 @@ public class GrupoController {
 	public void initBinder(WebDataBinder binder) {
 			
 		binder.addValidators(new GrupoValidator(grupoService));
+	
 	}
 
 	@GetMapping(value = "/grupos/{id}")
@@ -60,6 +61,7 @@ public class GrupoController {
 		if (result.hasErrors()) {
 			return "/grupo/cadastro";
 		}
+		
 		
 		grupoService.insert(grupo);
 		//attr.addFlashAttribute("success", "Grupo cadastrado com sucesso");

@@ -24,12 +24,12 @@ public class Propriedade  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	
-	@Column(name="variedade", length = 50)
+	@Column(name="variedade", length = 25)
 	String variedade;
 	
-	@Column(name="subvariedade", length = 50)
+	@Column(name="subvariedade", length = 25)
 	String subvariedade;
-	@Column(name="classificacao", length = 50)
+	@Column(name="classificacao", length = 25)
 	String classificacao;
 	
 	@Column(name="unidade", length = 2)
@@ -87,6 +87,8 @@ public class Propriedade  implements Serializable {
 
 
 	public void setVariedade(String variedade) {
+		if (variedade != null) {
+		this.variedade = variedade.toUpperCase();}
 		this.variedade = variedade;
 	}
 
@@ -97,6 +99,8 @@ public class Propriedade  implements Serializable {
 
 
 	public void setSubvariedade(String subvariedade) {
+		if (subvariedade !=null) {
+		this.subvariedade = subvariedade.toUpperCase();}
 		this.subvariedade = subvariedade;
 	}
 
@@ -140,6 +144,9 @@ public class Propriedade  implements Serializable {
 
 
 	public void setClassificacao(String classificacao) {
+		if (classificacao !=null) {
+		this.classificacao = classificacao.toUpperCase();}
+		
 		this.classificacao = classificacao;
 	}
 
@@ -164,10 +171,7 @@ public class Propriedade  implements Serializable {
 	}
 
 
-	public void setPropriedade(Produto produto2) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
 	
